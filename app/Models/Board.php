@@ -14,7 +14,7 @@ class Board extends Model
 
     // Fillable fields
     protected $fillable = [
-        'name', // Board name
+        'title', // Board name
         'user_id', // Foreign key to users table (assuming a board belongs to a user)
     ];
 

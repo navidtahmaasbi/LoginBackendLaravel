@@ -10,6 +10,8 @@ class User extends Model
 {
     use HasFactory, HasApiTokens;
 
+    protected $primaryKey = 'userId';
+
     protected $fillable = [
         'name',
         'email',
