@@ -9,17 +9,24 @@ class Board extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id', 'name', 'description', 'start_date', 'end_date'];
+    // Table name
+    protected $table = 'boards';
 
-    // Define relationship with User
+    // Fillable fields
+    protected $fillable = [
+        'name', // Board name
+        'user_id', // Foreign key to users table (assuming a board belongs to a user)
+    ];
+
+    // Define the relationship with User (many boards belong to one user)
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    // Define relationship with Tasks
-    public function tasks()
+    // Define the relationship with Category (one board can have many categories)
+    public function categories()
     {
-        return $this->hasMany(Card::class);
+        return $this->hasMany(Category::class);
     }
 }

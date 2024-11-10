@@ -9,12 +9,19 @@ class Card extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['project_id', 'title', 'description', 'status', 'due_date'];
+    // Table name
+    protected $table = 'cards';
 
-    // Define relationship with Project
-    public function project()
+    // Fillable fields
+    protected $fillable = [
+        'title', // Card title
+        'description', // Card description
+        'category_id', // Foreign key to categories table
+    ];
+
+    // Define the relationship with Category (many cards belong to one category)
+    public function category()
     {
-        return $this->belongsTo(Board::class);
+        return $this->belongsTo(Category::class);
     }
 }
-
